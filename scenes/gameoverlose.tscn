@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://cif4g5vaqdhge"]
+
+[ext_resource type="FontFile" uid="uid://mql238jri037" path="res://assets/I-pixel-u.ttf" id="1_0xkr6"]
+[ext_resource type="Script" path="res://scripts/gameoverlose.gd" id="1_8i415"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hd6p1"]
+font = ExtResource("1_0xkr6")
+font_size = 100
+font_color = Color(0, 0, 0.419608, 1)
+
+[node name="Gameoverlose" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8i415")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.0509804, 0.00392157, 0.12549, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -250.0
+offset_top = 133.0
+offset_right = 250.0
+offset_bottom = 258.0
+grow_horizontal = 2
+text = "YOU LOSE
+"
+label_settings = SubResource("LabelSettings_hd6p1")

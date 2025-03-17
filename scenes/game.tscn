@@ -1,0 +1,82 @@
+[gd_scene load_steps=10 format=3 uid="uid://cdno32xe1jiwx"]
+
+[ext_resource type="PackedScene" uid="uid://fxqbw0o55ry3" path="res://scenes/ui.tscn" id="1_1l07y"]
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_rn1el"]
+[ext_resource type="PackedScene" uid="uid://dksp1xlkkmf8v" path="res://scenes/player.tscn" id="2_nbvhi"]
+[ext_resource type="PackedScene" uid="uid://cokilaqefm03c" path="res://scenes/ball.tscn" id="3_50lyt"]
+[ext_resource type="PackedScene" uid="uid://dvhgtom8gbths" path="res://scenes/wall.tscn" id="4_al5x7"]
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="5_4145h"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_jcssa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ow1yq"]
+size = Vector2(20, 120)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1wwbe"]
+size = Vector2(20, 639)
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_rn1el")
+
+[node name="UI" parent="." instance=ExtResource("1_1l07y")]
+
+[node name="player" parent="." instance=ExtResource("2_nbvhi")]
+position = Vector2(30, 300)
+
+[node name="ball" parent="." instance=ExtResource("3_50lyt")]
+position = Vector2(475, 237)
+
+[node name="wall2" parent="." instance=ExtResource("4_al5x7")]
+position = Vector2(938, 722)
+rotation = 1.5708
+
+[node name="wall4" parent="." instance=ExtResource("4_al5x7")]
+position = Vector2(-452, -32)
+
+[node name="wall3" parent="." instance=ExtResource("4_al5x7")]
+position = Vector2(939, -75)
+rotation = 1.5708
+
+[node name="enemy" type="CharacterBody2D" parent="."]
+position = Vector2(1122, 300)
+collision_mask = 6
+script = ExtResource("5_4145h")
+
+[node name="Sprite2D" type="Sprite2D" parent="enemy"]
+position = Vector2(1.54972e-06, 0)
+scale = Vector2(18, 120)
+texture = SubResource("CanvasTexture_jcssa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy"]
+shape = SubResource("RectangleShape2D_ow1yq")
+
+[node name="playerballdeathzone" type="Area2D" parent="."]
+position = Vector2(-12, 298)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="playerballdeathzone"]
+position = Vector2(0, 22.5)
+shape = SubResource("RectangleShape2D_1wwbe")
+
+[node name="enemyballdeathzone" type="Area2D" parent="."]
+position = Vector2(1164, 297)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemyballdeathzone"]
+position = Vector2(0, 22.5)
+shape = SubResource("RectangleShape2D_1wwbe")
+
+[node name="ballspawner" type="Marker2D" parent="."]
+position = Vector2(547, 283)
+
+[node name="ballspawnerenemy" type="Marker2D" parent="."]
+position = Vector2(603, 283)
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="body_entered" from="playerballdeathzone" to="." method="_on_playerballdeathzone_body_entered"]
+[connection signal="body_entered" from="enemyballdeathzone" to="." method="_on_enemyballdeathzone_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

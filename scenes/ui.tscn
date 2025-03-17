@@ -1,0 +1,103 @@
+[gd_scene load_steps=6 format=3 uid="uid://fxqbw0o55ry3"]
+
+[ext_resource type="Texture2D" uid="uid://diejo1s3dp7h7" path="res://assets/Bg.png" id="1_c14vu"]
+[ext_resource type="Script" path="res://scripts/ui.gd" id="1_ckw7o"]
+[ext_resource type="FontFile" uid="uid://mql238jri037" path="res://assets/I-pixel-u.ttf" id="2_6gr2y"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3fcd8"]
+font = ExtResource("2_6gr2y")
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_vjp0x"]
+font = ExtResource("2_6gr2y")
+font_size = 40
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+script = ExtResource("1_ckw7o")
+
+[node name="BG" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="BG"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_c14vu")
+
+[node name="score" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="playerscore" type="Label" parent="score"]
+layout_mode = 0
+offset_left = 480.0
+offset_top = 2.0
+offset_right = 536.0
+offset_bottom = 52.0
+text = "0"
+label_settings = SubResource("LabelSettings_3fcd8")
+
+[node name="enemyscore" type="Label" parent="score"]
+layout_mode = 0
+offset_left = 643.0
+offset_top = 2.0
+offset_right = 683.0
+offset_bottom = 52.0
+text = "0"
+label_settings = SubResource("LabelSettings_vjp0x")
+
+[node name="Pause" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="ColorRect" type="ColorRect" parent="Pause"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.0901961, 0.0901961, 0.0901961, 0.721569)
+
+[node name="Restart" type="Button" parent="Pause"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_6gr2y")
+theme_override_font_sizes/font_size = 50
+text = "RESTART"
+
+[node name="Exitmenu" type="Button" parent="Pause"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -133.0
+offset_top = 182.0
+offset_right = 135.0
+offset_bottom = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_6gr2y")
+theme_override_font_sizes/font_size = 30
+text = "MAIN MENU"
+
+[connection signal="pressed" from="Pause/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Pause/Exitmenu" to="." method="_on_exitmenu_pressed"]

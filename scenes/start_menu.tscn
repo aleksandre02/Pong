@@ -1,0 +1,116 @@
+[gd_scene load_steps=4 format=3 uid="uid://bd3d2ghsjukad"]
+
+[ext_resource type="FontFile" uid="uid://mql238jri037" path="res://assets/I-pixel-u.ttf" id="1_hfcvs"]
+[ext_resource type="Script" path="res://scripts/start_menu.gd" id="1_ipxwk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_yq4c3"]
+font = ExtResource("1_hfcvs")
+font_size = 80
+
+[node name="StartMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ipxwk")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.0509804, 0.00392157, 0.12549, 1)
+
+[node name="exitbutton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -51.0
+offset_top = 177.0
+offset_right = 52.0
+offset_bottom = 248.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.792157, 0.290196, 0.247059, 1)
+theme_override_fonts/font = ExtResource("1_hfcvs")
+theme_override_font_sizes/font_size = 40
+text = "EXIT"
+flat = true
+
+[node name="GameLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -67.5
+offset_right = 67.5
+offset_bottom = 75.0
+grow_horizontal = 2
+text = "PONG"
+label_settings = SubResource("LabelSettings_yq4c3")
+
+[node name="easy" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -151.0
+offset_right = 64.0
+offset_bottom = -93.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.588235, 0.721569, 1, 1)
+theme_override_fonts/font = ExtResource("1_hfcvs")
+theme_override_font_sizes/font_size = 50
+text = "EASY"
+flat = true
+
+[node name="medium" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -94.0
+offset_top = -84.0
+offset_right = 94.0
+offset_bottom = -26.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.223529, 0.223529, 0.560784, 1)
+theme_override_fonts/font = ExtResource("1_hfcvs")
+theme_override_font_sizes/font_size = 50
+text = "MEDIUM"
+flat = true
+
+[node name="impossible" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -14.0
+offset_right = 150.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.133333, 0.168627, 0.34902, 1)
+theme_override_fonts/font = ExtResource("1_hfcvs")
+theme_override_font_sizes/font_size = 50
+text = "IMPOSSIBLE"
+flat = true
+
+[connection signal="pressed" from="exitbutton" to="." method="_on_exitbutton_pressed"]
+[connection signal="pressed" from="easy" to="." method="_on_easy_pressed"]
+[connection signal="pressed" from="medium" to="." method="_on_medium_pressed"]
+[connection signal="pressed" from="impossible" to="." method="_on_impossible_pressed"]
