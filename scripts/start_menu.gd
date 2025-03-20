@@ -10,7 +10,6 @@ func _on_easy_pressed():
 func _on_medium_pressed():
 	Global.enemy_speed = 500
 	get_tree().change_scene_to_file("res://scenes/game.tscn")
-	
 
 func _on_impossible_pressed():
 	Global.enemy_speed = 1500

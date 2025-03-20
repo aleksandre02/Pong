@@ -21,7 +21,6 @@ func _on_exitmenu_pressed():
 	pause_menu()
 	get_tree().change_scene_to_file("res://scenes/start_menu.tscn")
 	
-
 func pause_menu():
 	if paused:
 		pause_node.hide()
